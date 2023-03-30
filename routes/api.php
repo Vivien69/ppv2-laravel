@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\MarchandController;
 use App\Http\Controllers\API\CategorieController;
 
@@ -21,4 +23,5 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 Route::apiResource('marchand', MarchandController::class);
 Route::apiResource('categorie', CategorieController::class);
+Route::apiResource('users', UserController::class);
 Route::get('marchands/search/{params}', [MarchandController::class, 'searchLike']);
