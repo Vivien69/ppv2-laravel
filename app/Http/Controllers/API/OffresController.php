@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Offres;
+use App\Models\Offre;
 use Illuminate\Http\Request;
 
 class OffresController extends Controller
@@ -35,7 +35,7 @@ class OffresController extends Controller
      * @param  \App\Models\Offres  $offres
      * @return \Illuminate\Http\Response
      */
-    public function show(Offres $offres)
+    public function show(Offre $offre)
     {
         //
     }
@@ -47,7 +47,7 @@ class OffresController extends Controller
      * @param  \App\Models\Offres  $offres
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Offres $offres)
+    public function update(Request $request, Offre $offre)
     {
         //
     }
@@ -58,7 +58,7 @@ class OffresController extends Controller
      * @param  \App\Models\Offres  $offres
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Offres $offres)
+    public function destroy(Offre $offre)
     {
         //
     }

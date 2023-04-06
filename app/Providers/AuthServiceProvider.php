@@ -25,7 +25,6 @@ class AuthServiceProvider extends ServiceProvider
         
         $this->registerPolicies();
 
-       
         Passport::hashClientSecrets();
 
         ResetPassword::createUrlUsing(function (object $notifiable, string $token) {

@@ -6,13 +6,14 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\AuthTokenController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/register', [RegisteredUserController::class, 'store'])
+Route::post('/register', [AuthTokenController::class, 'register'])
                 ->middleware('guest')
                 ->name('register');
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+Route::post('/login', [AuthTokenController::class, 'login'])
                 ->middleware('guest')
                 ->name('login');
 
@@ -32,6 +33,8 @@ Route::post('/email/verification-notification', [EmailVerificationNotificationCo
                 ->middleware(['auth', 'throttle:6,1'])
                 ->name('verification.send');
 
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->middleware('auth')
-                ->name('logout');
+
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/logout', [AuthTokenController::class, 'logout'])->name('logout');
+});
