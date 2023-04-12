@@ -1,12 +1,10 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\MarchandController;
 use App\Http\Controllers\API\CategorieController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,15 +15,23 @@ use App\Http\Controllers\API\CategorieController;
 | is assigned the "api" middleware group. Enjoy building your API!employeurpar
 |
 */
-Route::middleware('auth:api')->group(function () {
-    Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
-});
 
-
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::apiResource('marchand', MarchandController::class);
 Route::apiResource('categorie', CategorieController::class);
-Route::apiResource('users', UserController::class);
+
+Route::get('users', [UserController::class, 'index']);
+Route::get('users/{user}', [UserController::class, 'show']);
+Route::post('users', [UserController::class, 'store']);
+Route::put('users/{user}', [UserController::class, 'update']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('users/private', [UserController::class, 'showPrivate']);
+    Route::get('users/{user}/role', [UserController::class, 'role']);
+    
+});
+
+Route::post('profil', [UserController::class, 'profil']);
+
+
 Route::get('marchands/search/{params}', [MarchandController::class, 'searchLike']);
+
+

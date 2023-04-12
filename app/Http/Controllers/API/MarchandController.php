@@ -78,8 +78,8 @@ class MarchandController extends Controller
     public function update(MarchandRequest $request, Marchand $marchand)
     {
 
-        //Create a marchand
-        $$marchand->update([
+        //Update a marchand
+        $marchand->update([
             'name' => $request->name,
             'slug' => $request->slug,
             'url' => $request->url,

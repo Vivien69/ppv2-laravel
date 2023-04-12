@@ -187,7 +187,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Laravel\Passport\PassportServiceProvider::class,
+        //Laravel\Passport\PassportServiceProvider::class,
         /*
          * Application Service Providers...
          */

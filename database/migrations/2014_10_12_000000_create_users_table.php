@@ -19,9 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('role')->default('USER');
             $table->string('IP')->nullable();
-            $table->string('plusInfos')->nullable();
-            $table->tinyInteger('anorder')->nullable();
-            $table->tinyInteger('sort')->nullable();
+            $table->string('content')->nullable();
             $table->string('credit_points')->default(0);
             $table->rememberToken();
             $table->timestamps();
